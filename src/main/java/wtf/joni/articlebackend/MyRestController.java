@@ -34,7 +34,7 @@ public class MyRestController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/articles", method = RequestMethod.POST)
-    public ResponseEntity<?> saveCustomer(@RequestBody Article article, UriComponentsBuilder b) {
+    public ResponseEntity<?> saveArticle(@RequestBody Article article, UriComponentsBuilder b) {
         article.setDate(new Date());
         db.save(article);
         UriComponents uriComponents =
@@ -44,7 +44,7 @@ public class MyRestController {
     }
 
     @RequestMapping(value = "/articles/{articleId}", method = RequestMethod.DELETE)
-    public void deleteCustomer(@PathVariable long articleId) {
+    public void deleteArticle(@PathVariable long articleId) {
         Article article = db.findArticleById(articleId);
         if (article != null) {
             db.deleteById(articleId);
